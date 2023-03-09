@@ -14,9 +14,10 @@ jobs:
           java-version: '19'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install clojure tools
+        uses: DeLaGuardo/setup-clojure@10.2
+        with:
+          bb: latest
       - name: Repro
-        shell: bash
         run: |
-          echo "GRAALVM_HOME: $GRAALVM_HOME"
-          echo "JAVA_HOME: $JAVA_HOME"
-          ./build
+          bb build.clj
