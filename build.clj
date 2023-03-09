@@ -4,7 +4,6 @@
          '[babashka.process :refer [shell]])
 
 (println "JIT")
-
 (shell "javac" "Repro.java")
 (shell "java" "Repro")
 
