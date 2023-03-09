@@ -5,3 +5,4 @@ classloader.build_artifacts.txt
 Repro.class
 repro
 repro.build_artifacts.txt
+Repro$1.class
