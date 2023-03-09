@@ -3,7 +3,8 @@ import java.io.File;
 
 public class Repro {
     public static void main(String [] args) throws Exception {
-        var addr = java.net.UnixDomainSocketAddress.of("sock1.sock");
+        var path = java.nio.file.Path.of(System.getProperty("java.io.tmpdir")).resolve("server.socket");
+        var addr = java.net.UnixDomainSocketAddress.of(path);
         var runnable = new Runnable(){
                 public void run() {
                     try {
@@ -22,5 +23,6 @@ public class Repro {
         var chan = java.nio.channels.SocketChannel.open(java.net.StandardProtocolFamily.UNIX);
         chan.connect(addr);
         System.out.println(chan.toString());
+        java.nio.file.Files.delete(path);
     }
 }
