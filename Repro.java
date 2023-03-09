@@ -3,7 +3,7 @@ import java.io.File;
 
 public class Repro {
     public static void main(String [] args) throws Exception {
-        var addr = java.net.UnixDomainSocketAddress.of("/tmp/sock1");
+        var addr = java.net.UnixDomainSocketAddress.of("sock1");
         var runnable = new Runnable(){
                 public void run() {
                     try {
