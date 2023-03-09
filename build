@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+echo "JIT:"
+$GRAALVM_HOME/bin/javac Repro.java
+$GRAALVM_HOME/bin/java Repro
+
+echo "native-image:"
+$GRAALVM_HOME/bin/gu install native-image
+$GRAALVM_HOME/bin/native-image -H:EnableURLProtocols=http,https,jar,unix Repro
+./repro
